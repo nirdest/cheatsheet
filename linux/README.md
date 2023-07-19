@@ -16,3 +16,7 @@ print " | " $4 " | " $8 " | " $12 " | " $16 "| "  datetime[1] " | " datetime[2] 
 | grep 'sounds\|firmwares' | grep -v " /sounds/ " | grep -v " /firmwares/ " \
 | grep -v " /firmwares/?location= " | grep -v " /sounds/?location= " | grep firmwares >> gg3.txt
 ```
+
+```
+while true; do curl -s -o /dev/null -w "%{http_code} - %{time_total}s/n” https://ya.ru/  ; done
+```
