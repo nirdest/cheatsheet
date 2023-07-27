@@ -28,3 +28,6 @@ kubectl wait --namespace ingress-nginx \
   --for=condition=ready pod \
   --selector=app.kubernetes.io/component=controller \
   --timeout=190s
+
+helm install victoria-metrics vm/victoria-metrics-cluster --create-namespace --namespace monitoring \
+--set ingress.enabled=true --set hosts=vm.10.11.0.64.nip.io
