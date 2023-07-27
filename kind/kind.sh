@@ -29,5 +29,6 @@ kubectl wait --namespace ingress-nginx \
   --selector=app.kubernetes.io/component=controller \
   --timeout=190s
 
-helm install victoria-metrics vm/victoria-metrics-cluster --create-namespace --namespace monitoring \
---set ingress.enabled=true --set hosts=vm.10.11.0.64.nip.io
+helm install victoria-metrics vm/victoria-metrics-cluster --create-namespace --namespace monitoring --set ingress.enabled=true --set ingress.hosts={vm.10.11.0.64.nip.io}  --set ingress.annotations: {kubernetes.io/ingress.class: nginx}
+helm install grafana -n monitoring grafana/grafana --set ingress.enabled=true --set ingress.hosts={grafana.10.11.0.64.nip.io} --set ingress.annotations: {kubernetes.io/ingress.class: nginx}
+helm install prometheus -n monitoring oci://registry-1.docker.io/bitnamicharts/kube-prometheus --set prometheus.remoteWrite={http://victoria-metrics-victoria-metrics-cluster-vminsert.monitoring.svc.cluster.local:8480/insert/0/prometheus/}
