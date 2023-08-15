@@ -29,8 +29,8 @@ kubectl wait --namespace ingress-nginx \
   --selector=app.kubernetes.io/component=controller \
   --timeout=190s
 
-helm upgrade --install grafana --create-namespace -n monitoring grafana/grafana --set ingress.enabled=true --set ingress.hosts={grafana.10.11.0.64.nip.io} --set ingress.annotations={'kubernetes.io/ingress.class: nginx'}
+helm upgrade --install grafana --create-namespace -n monitoring grafana/grafana --set ingress.enabled=true --set ingress.hosts={grafana.10.11.0.35.nip.io} --set ingress.annotations={'kubernetes.io/ingress.class: nginx'}
 helm upgrade --install loki grafana/loki -n monitoring --set minio.enabled=true
-helm upgrade --install --wait podinfo --set ingress.enabled=true --set ingress.annotations.'kubernetes\.io\/ingress\.class'="nginx" --set 'ingress.hosts[0].host=podinfo.10.11.0.64.nip.io' --set 'ingress.hosts[0].paths[0].path=\/' --set 'ingress.hosts[0].paths[0].pathType=ImplementationSpecific' podinfo/podinfo
+helm upgrade --install --wait podinfo --set ingress.enabled=true --set ingress.annotations.'kubernetes\.io\/ingress\.class'="nginx" --set 'ingress.hosts[0].host=podinfo.10.11.0.35.nip.io' --set 'ingress.hosts[0].paths[0].path=\/' --set 'ingress.hosts[0].paths[0].pathType=ImplementationSpecific' podinfo/podinfo
 
 # http://victoria-metrics-victoria-metrics-cluster-vmselect.monitoring.svc.cluster.local:8481/select/0/prometheus/
