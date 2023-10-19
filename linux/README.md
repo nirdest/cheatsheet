@@ -20,3 +20,6 @@ print " | " $4 " | " $8 " | " $12 " | " $16 "| "  datetime[1] " | " datetime[2] 
 ```
 while true; do curl -s -o /dev/null -w "%{http_code} - %{time_total}s/n” https://ya.ru/  ; done
 ```
+```
+HEALTHCHECK CMD netstat -an | grep 9083 > /dev/null; if [ 0 != $? ]; then exit 1; fi;
+```
