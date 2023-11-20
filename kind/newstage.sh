@@ -11,5 +11,6 @@ elastic/elasticsearch \
 
 helm upgrade --install kibana --create-namespace --namespace elasticsearch --version 7.17.3 elastic/kibana \
 --set ingress.enabled=true \
---set 'ingress.hosts[0].host=kibana.10.255.255.11.nip.io' \
---set 'ingress.hosts[0].paths[0].path=\/'
+--set 'ingress.hosts[0].host=kibana-staging' \
+--set 'ingress.hosts[0].paths[0].path=\/' \
+--set 'ingress.className='''
